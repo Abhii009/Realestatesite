@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aravali Realty | Flats, Villas, Plots and Commercial Property in Jaipur</title>
+<meta name="description" content="Buy or rent verified flats, villas, plots and commercial spaces across Jaipur: Vaishali Nagar, Malviya Nagar, C-Scheme, Mansarovar, Jagatpura and more.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  // Design tokens: lagoon slate (ink), seafoam teal (brass), soft mist (stone)
+  tailwind.config = { theme: { extend: {
+    colors: { ink: '#27464F', brass: '#357A6F', stone: '#EDF3F1', line: '#D9E3E0', mint: '#9ADBC9', white: '#FAFCFB' },
+    fontFamily: { display: ['Fraunces', 'serif'], sans: ['Manrope', 'sans-serif'] },
+    fontSize: { xs: ['.7rem', '1rem'], sm: ['.8rem', '1.2rem'], base: ['.9rem', '1.45rem'], lg: ['1rem', '1.55rem'], xl: ['1.1rem', '1.6rem'], '2xl': ['1.3rem', '1.75rem'],
+      '3xl': ['1.6rem', '2rem'], '4xl': ['1.9rem', '2.3rem'], '5xl': ['2.4rem', '1.1'], '6xl': ['2.8rem', '1.05'], '7xl': ['3.4rem', '1.05'] }
+  } } }
+</script>
+<style>
+  html.lenis, html.lenis body { height: auto; } .lenis.lenis-smooth { scroll-behavior: auto !important; } .lenis.lenis-stopped { overflow: hidden; }
+  body { font-size: .9rem; font-family: 'Manrope', sans-serif; color: #27464F; background: #EDF3F1; }
+  input[type=range] { accent-color: #357A6F; width: 100%; }
+  .field { width: 100%; border: 1px solid #D9E3E0; border-radius: .5rem; padding: .65rem .8rem; background: #fff; font-size: .85rem; }
+  .field:focus, button:focus-visible, a:focus-visible { outline: 2px solid #357A6F; outline-offset: 2px; }
+  .chip { padding: .45rem .95rem; border-radius: 999px; border: 1px solid #D9E3E0; background: #fff; font-size: .8rem; font-weight: 600; white-space: nowrap; }
+  .chip.on { background: #27464F; color: #fff; border-color: #27464F; }
+  .tab.on { background: #357A6F; color: #fff; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .jaali { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M24 2 46 24 24 46 2 24Z' fill='none' stroke='white'/%3E%3Ccircle cx='24' cy='24' r='6' fill='none' stroke='white'/%3E%3C/svg%3E"); }
+  .glass { background: rgba(255,255,255,.14); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.25); }
+  .lift { box-shadow: 0 1px 2px rgba(39,70,79,.06), 0 14px 34px -14px rgba(39,70,79,.22); transition: box-shadow .3s; }
+  .lift:hover { box-shadow: 0 2px 4px rgba(39,70,79,.08), 0 26px 48px -16px rgba(39,70,79,.34); }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .rise { opacity: 0; animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  /* 3D floating tiles: front glass plane + brass back plane gives visible thickness when rotating */
+  .fl { position: absolute; top: 0; width: 52px; height: 52px; transform-style: preserve-3d; will-change: transform; }
+  @media (min-width: 768px) { .fl { width: 76px; height: 76px; } }
+  .fl-f, .fl-b { position: absolute; inset: 0; border-radius: 24%; opacity: var(--a, 0); }
+  .fl-f { display: flex; align-items: center; justify-content: center; color: #357A6F; background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,.6)); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 20px 40px -14px rgba(39,70,79,.5); backdrop-filter: blur(8px); }
+  .fl-f svg { width: 48%; height: 48%; }
+  .fl-b { background: #357A6F; transform: translateZ(-18px); }
+  @keyframes up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  .modal-in { animation: up .35s ease; }
+  @media (prefers-reduced-motion: reduce) { .rise, .modal-in { animation: none; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body class="antialiased">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
+
+<!-- ============ HEADER ============ -->
+<div id="prog" class="fixed top-0 left-0 right-0 h-[3px] bg-brass z-50 origin-left" style="transform:scaleX(0)"></div>
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-line">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <a href="#top" class="flex items-center gap-2.5 font-display text-xl font-semibold tracking-tight"><span class="w-9 h-9 rounded-xl bg-ink text-brass flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5"></i></span>Aravali Realty</a>
+    <nav class="hidden lg:flex gap-7 text-sm font-semibold">
+      <a href="#listings" class="hover:text-brass">Properties</a>
+      <a href="#agent" class="hover:text-brass">Your agent</a>
+      <a href="#contact" class="hover:text-brass">Contact</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="tel:+919829000000" aria-label="Call" class="p-2.5 rounded-full border border-line hover:bg-stone"><i data-lucide="phone" class="w-4 h-4"></i></a>
+      <a href="https://wa.me/919829000000" target="_blank" rel="noopener" aria-label="WhatsApp" class="p-2.5 rounded-full border border-line hover:bg-stone"><svg class="w-[18px] h-[18px]" fill="#25D366"><use href="#wa"/></svg></a>
+      <button onclick="openForm('inquire')" class="hidden sm:block bg-ink text-white text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-brass">Inquire</button>
+      <button id="menuBtn" aria-label="Menu" class="lg:hidden p-2.5 rounded-full border border-line"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-line bg-white px-4 py-3 grid gap-1 text-sm font-semibold">
+    <a href="#listings" class="py-2">Properties</a><a href="#agent" class="py-2">Your agent</a><a href="#contact" class="py-2">Contact</a>
+    <button onclick="openForm('sell')" class="py-2 text-left text-brass">List your property</button>
+    <button onclick="openForm('inquire')" class="mt-1 bg-ink text-white py-3 rounded-lg">Inquire now</button>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ HERO + SEARCH ============ -->
+<section id="hero" class="relative isolate overflow-hidden bg-ink text-white">
+  <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=75" id="heroImg" alt="" class="absolute inset-0 -z-10 w-full h-full object-cover will-change-transform">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/80 to-ink/10"></div>
+  <div class="jaali absolute inset-0 -z-10 opacity-[.06]"></div>
+  <div class="max-w-7xl mx-auto px-4 pt-14 pb-44 md:pt-28 md:pb-56 grid lg:grid-cols-12 gap-10 items-end">
+    <div id="heroText" class="lg:col-span-7">
+      <p class="rise glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm"><i data-lucide="shield-check" class="w-4 h-4 text-mint"></i>RERA Rajasthan registered, serving the Pink City since 2012</p>
+      <h1 class="rise font-display text-5xl md:text-7xl font-medium leading-[1.05] mt-6" style="animation-delay:.12s">Homes in Jaipur you will actually want to walk into.</h1>
+      <p class="rise mt-5 text-white/80 max-w-lg text-lg" style="animation-delay:.24s">Verified listings from Vaishali Nagar to Jagatpura, honest pricing and site visits arranged within a day.</p>
+      <div class="rise mt-8 flex flex-wrap gap-3" style="animation-delay:.36s">
+        <a href="#listings" class="bg-brass text-white font-semibold px-6 py-3.5 rounded-full hover:brightness-110">Browse properties</a>
+        <button onclick="openForm('inquire')" class="glass font-semibold px-6 py-3.5 rounded-full hover:bg-white/25">Talk to Rajveer</button>
+      </div>
+      <div class="rise mt-10 flex gap-8 text-sm text-white/75" style="animation-delay:.48s">
+        <p><b class="block font-display text-2xl text-white">14 years</b>in Jaipur</p>
+        <p><b class="block font-display text-2xl text-white">600+</b>deals closed</p>
+        <p><b class="block font-display text-2xl text-white">4.9 / 5</b>client rating</p>
+      </div>
+    </div>
+    <!-- Featured listing card (desktop) -->
+    <button id="heroCard" onclick="openDetail(3)" class="hidden lg:block lg:col-span-5 glass rounded-3xl p-3 text-left" style="will-change:transform">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=70" alt="Featured villa" class="w-full aspect-[16/10] object-cover rounded-2xl">
+      <div class="p-3 flex items-end justify-between gap-3">
+        <div><p class="text-xs text-white/70">Featured villa</p><p class="font-semibold">Independent Villa with Garden</p><p class="text-sm text-white/70">Vaishali Nagar, Jaipur</p></div>
+        <p class="font-display text-2xl">₹4.2 Cr</p></div>
+    </button>
+  </div>
+</section>
+
+<!-- Floating search card -->
+<div class="relative z-10 max-w-6xl mx-auto px-4 -mt-32 md:-mt-40">
+  <div class="bg-white rounded-3xl p-5 md:p-7 shadow-2xl border border-line">
+    <div class="flex items-center justify-between gap-3 mb-5">
+      <div class="inline-flex rounded-full bg-stone p-1" role="tablist">
+        <button class="tab on px-5 py-2 rounded-full text-sm font-semibold" data-purpose="sale">For Sale</button>
+        <button class="tab px-5 py-2 rounded-full text-sm font-semibold" data-purpose="rent">For Rent</button>
+      </div>
+      <p class="hidden sm:block text-sm text-ink/60">Results update as you type</p>
+    </div>
+    <div class="grid gap-4 md:grid-cols-12 items-end">
+      <label class="md:col-span-4 block"><span class="text-xs font-semibold text-ink/60">Location or keyword</span>
+        <span class="relative block mt-1"><i data-lucide="search" class="w-4 h-4 absolute left-3 top-3.5 text-ink/50"></i>
+        <input id="q" list="locList" class="field pl-9 !py-3" placeholder="Jaipur locality, e.g. Vaishali Nagar"></span></label>
+      <label class="md:col-span-2 block"><span class="text-xs font-semibold text-ink/60">Bedrooms</span>
+        <select id="bhk" class="field mt-1 !py-3"><option value="">Any BHK</option><option value="1">1 BHK</option><option value="2">2 BHK</option><option value="3">3 BHK</option><option value="4">4+ BHK</option></select></label>
+      <div class="md:col-span-4"><div class="flex justify-between text-xs font-semibold mb-2"><span class="text-ink/60">Max budget</span><span id="budgetLabel" class="text-brass text-sm"></span></div>
+        <input id="budget" type="range" min="5" max="100" value="100" aria-label="Max budget"></div>
+      <button onclick="go('#listings')" class="md:col-span-2 bg-ink text-white font-semibold py-3.5 rounded-xl hover:bg-brass">Show results</button>
+    </div>
+  </div>
+</div>
+
+<!-- Browse by type -->
+<section class="max-w-7xl mx-auto px-4 pt-14">
+  <h2 class="font-display text-3xl md:text-4xl">Browse by property type</h2>
+  <div id="tiles" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+</section>
+
+<!-- ============ JAIPUR LOCALITIES ============ -->
+<section class="max-w-7xl mx-auto px-4 pt-14">
+  <h2 class="font-display text-3xl md:text-4xl">Popular Jaipur localities</h2>
+  <p class="text-ink/60 mt-1 text-sm">Tap a locality to see its properties.</p>
+  <div id="localities" class="mt-6 flex gap-4 overflow-x-auto no-scrollbar -mx-4 px-4 pb-2 snap-x"></div>
+  <datalist id="locList"></datalist>
+</section>
+
+<!-- ============ LISTINGS ============ -->
+<section id="listings" class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+    <div>
+      <h2 class="font-display text-3xl md:text-4xl">Available properties</h2>
+      <div class="flex items-center gap-3 mt-1"><p id="count" class="text-ink/60 text-sm"></p><select id="sort" class="field !w-auto !py-1.5 !text-xs" aria-label="Sort"><option value="">Newest</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option></select></div>
+    </div>
+    <div id="chips" class="flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 md:mx-0 md:px-0"></div>
+  </div>
+  <div id="grid" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+  <div id="empty" class="hidden text-center py-16">
+    <p class="font-display text-2xl">No properties match these filters.</p>
+    <p class="text-ink/60 mt-2">Try a higher budget or clear the keyword, or ask us about off-market listings.</p>
+    <button onclick="resetFilters()" class="mt-5 bg-ink text-white px-5 py-3 rounded-full text-sm font-semibold">Clear filters</button>
+  </div>
+</section>
+
+<!-- ============ AGENT + TESTIMONIALS ============ -->
+<section id="agent" class="max-w-7xl mx-auto px-4 py-12 md:py-16">
+  <div class="grid gap-10 lg:grid-cols-5">
+    <div class="lg:col-span-2 flex flex-col sm:flex-row lg:flex-col gap-6">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=70" alt="Portrait of Rajveer Singh Shekhawat" data-r class="w-full sm:w-56 lg:w-full aspect-[4/5] object-cover rounded-2xl bg-line">
+      <div>
+        <h2 class="font-display text-3xl">Rajveer Singh Shekhawat</h2>
+        <p class="text-brass font-semibold text-sm mt-1">Founder and lead broker · RERA Reg. RAJ/A/0000/00</p>
+        <p class="mt-4 text-ink/70 leading-relaxed">Rajveer has spent 14 years helping Jaipur families buy their first flat, move up to a villa, and set up offices. He visits every property himself before listing it, and negotiates on your side of the table.</p>
+        <button onclick="openForm('inquire')" class="mt-5 bg-ink text-white px-5 py-3 rounded-full text-sm font-semibold hover:bg-brass">Book a free consultation</button>
+      </div>
+    </div>
+    <div class="lg:col-span-3 grid gap-5 content-start">
+      <h3 class="font-display text-2xl">What clients say</h3>
+      <figure data-r class="bg-white border border-line rounded-2xl p-6"><blockquote class="leading-relaxed">Rajveer showed us five flats in one afternoon and was upfront about the two we should skip. We closed in three weeks.</blockquote><figcaption class="mt-3 text-sm font-semibold">Neha and Arjun Mathur · bought in Malviya Nagar</figcaption></figure>
+      <figure data-r class="bg-white border border-line rounded-2xl p-6"><blockquote class="leading-relaxed">Found a ground-floor shop on MI Road for our boutique, and the rent agreement was sorted the same week.</blockquote><figcaption class="mt-3 text-sm font-semibold">Pooja Agarwal · rents in Jaipur</figcaption></figure>
+      <figure data-r class="bg-white border border-line rounded-2xl p-6"><blockquote class="leading-relaxed">Listed my plot on Monday and had three serious buyers by Sunday. Clear paperwork and no surprises.</blockquote><figcaption class="mt-3 text-sm font-semibold">Mahendra Kumawat · sold a plot in Jagatpura</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELLER CTA ============ -->
+<section class="max-w-7xl mx-auto px-4 pb-12 md:pb-16">
+  <div data-r class="rounded-2xl bg-brass text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div><h2 class="font-display text-3xl md:text-4xl">Own a property you want to sell or rent out?</h2><p class="mt-2 text-white/90">Share a few details and we'll call you back with a free valuation.</p></div>
+    <button onclick="openForm('sell')" class="bg-white text-ink font-semibold px-6 py-3.5 rounded-full shrink-0 hover:bg-stone">List your property</button>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="bg-ink text-white">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid gap-10 md:grid-cols-4">
+    <div><p class="font-display text-2xl">Aravali Realty</p><p class="text-white/70 text-sm mt-3">Residential and commercial property brokers serving Jaipur since 2012.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Instagram" class="p-2.5 rounded-full border border-white/25 hover:bg-white/10"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="Facebook" class="p-2.5 rounded-full border border-white/25 hover:bg-white/10"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="YouTube" class="p-2.5 rounded-full border border-white/25 hover:bg-white/10"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+      </div></div>
+    <div><p class="font-semibold mb-3">Quick links</p><ul class="grid gap-2 text-sm text-white/70"><li><a href="#listings" class="hover:text-white">Properties</a></li><li><a href="#agent" class="hover:text-white">Your agent</a></li><li><button onclick="openForm('sell')" class="hover:text-white">List your property</button></li></ul></div>
+    <div><p class="font-semibold mb-3">Visit the office</p><address class="not-italic text-sm text-white/70 leading-relaxed">204, Shree Complex, Ashok Marg,<br>C-Scheme, Jaipur, Rajasthan 302001<br><a href="tel:+919829000000" class="hover:text-white">+91 98290 00000</a><br>hello@aravalirealty.example</address></div>
+    <!-- Google Map embed: change the q= value to your exact office address -->
+    <iframe title="Office location in C-Scheme, Jaipur" src="https://www.google.com/maps?q=C-Scheme,Jaipur&output=embed" loading="lazy" class="w-full h-40 md:h-full min-h-40 rounded-xl border-0"></iframe>
+  </div>
+  <p class="border-t border-white/15 text-xs text-white/60 px-4 py-5 text-center max-w-4xl mx-auto">Disclaimer: Listings, prices and availability are indicative and subject to change without notice. Images are for illustration. Please verify RERA Rajasthan registration, JDA approval, title and other approvals before any transaction.</p>
+</footer>
+
+<!-- ============ MODALS ============ -->
+<div id="modal" data-lenis-prevent class="hidden fixed inset-0 z-50 bg-ink/70 backdrop-blur-sm overflow-y-auto" role="dialog" aria-modal="true">
+  <div id="modalBox" class="bg-white min-h-full md:min-h-0 md:my-8 md:mx-auto md:max-w-5xl md:rounded-3xl relative modal-in"></div>
+</div>
+<a href="https://wa.me/919829000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl flex items-center justify-center hover:scale-105 transition"><svg class="w-7 h-7" fill="#fff"><use href="#wa"/></svg></a>
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] hidden bg-ink text-white text-sm font-semibold px-5 py-3 rounded-full shadow-lg max-w-[90vw]"></div>
+
+<script>
+/* ============ DATA ============ */
+const PHONE = '919829000000';
+const U = (id, w = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=70`;
+const PROPS = [
+  { id: 1, title: '3 BHK Luxury Flat', purpose: 'sale', cat: 'Residential', type: 'flats', price: 18500000, loc: 'Malviya Nagar, Jaipur', beds: 3, baths: 3, sqft: 1850,
+    imgs: ['photo-1545324418-cc1a3fa10c00', 'photo-1560448204-e02f11c3d0e2', 'photo-1522708323590-d24dbb6b0267'],
+    desc: 'A corner flat on the 9th floor with open views, a modular kitchen and large balconies in a gated society.',
+    specs: { Furnishing: 'Semi-furnished', Floor: '9 of 14', Facing: 'East', Age: '2 years', Parking: '2 covered' },
+    amen: ['Lift', 'Power backup', 'Gym', 'Swimming pool', '24x7 security', 'Clubhouse'] },
+  { id: 2, title: 'Commercial Office Space', purpose: 'rent', cat: 'Commercial', type: 'commercial', price: 85000, loc: 'C-Scheme, Jaipur', beds: 0, baths: 2, sqft: 1600,
+    imgs: ['photo-1497366216548-37526070297c', 'photo-1556761175-5973dc0f32e7', 'photo-1497366811353-6870744d04b2'],
+    desc: 'A ready-to-use floor in a prime business address with a reception, two cabins and an open workspace for 20 seats.',
+    specs: { Furnishing: 'Fully furnished', Floor: '3 of 6', Facing: 'North', Age: '5 years', Parking: '6 cars' },
+    amen: ['Central AC', 'Power backup', 'Lift', 'CCTV', 'Conference room', 'Fibre internet'] },
+  { id: 3, title: 'Independent Villa with Garden', purpose: 'sale', cat: 'Residential', type: 'villas', price: 42000000, loc: 'Vaishali Nagar, Jaipur', beds: 4, baths: 5, sqft: 3600,
+    imgs: ['photo-1600596542815-ffad4c1539a9', 'photo-1600607687939-ce8a6c25118c', 'photo-1600585154340-be6161a56a0c'],
+    desc: 'A freehold villa on a 300 sq yd plot with a landscaped lawn, home theatre room and a private terrace.',
+    specs: { Furnishing: 'Unfurnished', Floor: 'G + 2', Facing: 'North-East', Age: '4 years', Parking: '3 cars' },
+    amen: ['Private garden', 'Terrace', 'Modular kitchen', 'Solar water', 'CCTV', 'Servant room'] },
+  { id: 4, title: 'Ground Floor Retail Shop', purpose: 'rent', cat: 'Commercial', type: 'commercial', price: 120000, loc: 'MI Road, Jaipur', beds: 0, baths: 1, sqft: 700,
+    imgs: ['photo-1441986300917-64674bd600d8', 'photo-1604719312566-8912e9227c6a', 'photo-1555529669-e69e7aa0ba9a'],
+    desc: 'A road-facing shop with a 22 ft frontage on one of the busiest shopping streets in the city.',
+    specs: { Furnishing: 'Unfurnished', Floor: 'Ground', Facing: 'South', Age: '10 years', Parking: 'Street' },
+    amen: ['Main-road frontage', 'Power backup', 'Shutter', 'Washroom', 'Storage mezzanine'] },
+  { id: 5, title: 'Residential Plot, Gated Township', purpose: 'sale', cat: 'Residential', type: 'plots', price: 9500000, loc: 'Jagatpura, Jaipur', beds: 0, baths: 0, sqft: 2250,
+    imgs: ['photo-1500382017468-9049fed747ef', 'photo-1500530855697-b586d89ba3ee', 'photo-1464822759023-fed622ff2c3b'],
+    desc: 'A JDA-approved 250 sq yd plot on a 40 ft road with a clear title, near the airport corridor and schools.',
+    specs: { Approval: 'JDA approved', Facing: 'West', 'Road width': '40 ft', Ownership: 'Freehold', Corner: 'Yes' },
+    amen: ['Gated entry', 'Wide roads', 'Street lights', 'Park', 'Water connection', 'Sewer line'] },
+  { id: 6, title: '2 BHK Apartment', purpose: 'rent', cat: 'Residential', type: 'flats', price: 28000, loc: 'Mansarovar, Jaipur', beds: 2, baths: 2, sqft: 1150,
+    imgs: ['photo-1512917774080-9991f1c4c750', 'photo-1502672260266-1c1ef2d93688', 'photo-1484154218962-a197022b5858'],
+    desc: 'A bright, well-kept flat close to the metro, markets and schools. Family or working professionals preferred.',
+    specs: { Furnishing: 'Semi-furnished', Floor: '2 of 4', Facing: 'South-East', Age: '6 years', Parking: '1 covered' },
+    amen: ['Lift', 'Power backup', 'Guard', 'Park', 'Water 24x7'] },
+  { id: 7, title: '4 BHK Farmhouse Villa', purpose: 'rent', cat: 'Residential', type: 'villas', price: 150000, loc: 'Tonk Road, Jaipur', beds: 4, baths: 4, sqft: 4200,
+    imgs: ['photo-1582407947304-fd86f028f716', 'photo-1600210492486-724fe5c67fb0', 'photo-1600566753190-17f0baa2a6c3'],
+    desc: 'A spacious villa on a one-acre green plot, suited to families or long-term corporate leases.',
+    specs: { Furnishing: 'Furnished', Floor: 'G + 1', Facing: 'East', Age: '8 years', Parking: '5 cars' },
+    amen: ['Lawn', 'Swimming pool', 'Caretaker', 'Borewell', 'Power backup', 'Pet friendly'] },
+  { id: 8, title: '3 BHK Builder Floor', purpose: 'sale', cat: 'Residential', type: 'flats', price: 13500000, loc: 'Bani Park, Jaipur', beds: 3, baths: 3, sqft: 1700,
+    imgs: ['photo-1502672260266-1c1ef2d93688', 'photo-1560448204-e02f11c3d0e2', 'photo-1484154218962-a197022b5858'],
+    desc: 'A spacious second-floor builder floor on a quiet Bani Park lane, a short drive from Jaipur Junction and the old city markets.',
+    specs: { Furnishing: 'Semi-furnished', Floor: '2 of 3', Facing: 'North', Age: '3 years', Parking: '1 covered' },
+    amen: ['Vastu compliant', 'Stilt parking', 'Terrace access', 'Power backup', 'Modular kitchen'] },
+  { id: 9, title: '2 BHK Flat near Metro', purpose: 'sale', cat: 'Residential', type: 'flats', price: 5800000, loc: 'Ajmer Road, Jaipur', beds: 2, baths: 2, sqft: 1050,
+    imgs: ['photo-1522708323590-d24dbb6b0267', 'photo-1512917774080-9991f1c4c750', 'photo-1502672260266-1c1ef2d93688'],
+    desc: 'An affordable, ready-to-move 2 BHK in a gated society close to the Ajmer Road metro corridor and schools.',
+    specs: { Furnishing: 'Unfurnished', Floor: '5 of 12', Facing: 'West', Age: '1 year', Parking: '1 covered' },
+    amen: ['Lift', 'Metro nearby', 'Kids play area', 'Gym', '24x7 security', 'RERA registered'] },
+  { id: 10, title: 'Corner Plot, 200 sq yd', purpose: 'sale', cat: 'Residential', type: 'plots', price: 6200000, loc: 'Sirsi Road, Jaipur', beds: 0, baths: 0, sqft: 1800,
+    imgs: ['photo-1464822759023-fed622ff2c3b', 'photo-1500382017468-9049fed747ef', 'photo-1500530855697-b586d89ba3ee'],
+    desc: 'A corner plot with a clear title in a developing colony on Sirsi Road, with a 30 ft road and a park nearby.',
+    specs: { Approval: 'JDA approved', Facing: 'North-East', 'Road width': '30 ft', Ownership: 'Freehold', Corner: 'Yes' },
+    amen: ['Park', 'Street lights', 'Water connection', 'Sewer line', 'Boundary wall'] },
+  { id: 11, title: 'Showroom on Tonk Road', purpose: 'rent', cat: 'Commercial', type: 'commercial', price: 250000, loc: 'Tonk Road, Jaipur', beds: 0, baths: 2, sqft: 2800,
+    imgs: ['photo-1604719312566-8912e9227c6a', 'photo-1441986300917-64674bd600d8', 'photo-1555529669-e69e7aa0ba9a'],
+    desc: 'A double-height showroom with 40 ft frontage on a high-traffic stretch of Tonk Road, ideal for furniture, cars or fashion.',
+    specs: { Furnishing: 'Bare shell', Floor: 'Ground + Mezzanine', Facing: 'East', Age: '4 years', Parking: '8 cars' },
+    amen: ['Main-road frontage', 'Power backup', 'Glass facade', 'Washrooms', 'CCTV'] },
+  { id: 12, title: 'Office Floor in IT Park', purpose: 'rent', cat: 'Commercial', type: 'commercial', price: 55000, loc: 'Sitapura, Jaipur', beds: 0, baths: 2, sqft: 1200,
+    imgs: ['photo-1497366811353-6870744d04b2', 'photo-1497366216548-37526070297c', 'photo-1556761175-5973dc0f32e7'],
+    desc: 'A plug-and-play office floor for a 12 to 15 seat team in the Sitapura industrial and IT belt, with a cafeteria on site.',
+    specs: { Furnishing: 'Fully furnished', Floor: '2 of 5', Facing: 'South', Age: '3 years', Parking: '4 cars' },
+    amen: ['Central AC', 'Power backup', 'Fibre internet', 'Cafeteria', 'Lift'] },
+  { id: 13, title: '3 BHK Villa, Gated Colony', purpose: 'sale', cat: 'Residential', type: 'villas', price: 31000000, loc: 'Ajmer Road, Jaipur', beds: 3, baths: 4, sqft: 2800,
+    imgs: ['photo-1600210492486-724fe5c67fb0', 'photo-1600607687939-ce8a6c25118c', 'photo-1582407947304-fd86f028f716'],
+    desc: 'A modern duplex villa in a gated colony with a clubhouse, wide internal roads and a small private lawn.',
+    specs: { Furnishing: 'Semi-furnished', Floor: 'G + 1', Facing: 'East', Age: 'New', Parking: '2 cars' },
+    amen: ['Clubhouse', 'Vastu compliant', 'Private lawn', 'Swimming pool', '24x7 security', 'Power backup'] },
+  { id: 14, title: '1 BHK Studio Apartment', purpose: 'rent', cat: 'Residential', type: 'flats', price: 17000, loc: 'Vaishali Nagar, Jaipur', beds: 1, baths: 1, sqft: 620,
+    imgs: ['photo-1484154218962-a197022b5858', 'photo-1522708323590-d24dbb6b0267', 'photo-1560448204-e02f11c3d0e2'],
+    desc: 'A compact, fully furnished studio near the Vaishali Nagar cafes and coaching hubs, good for young professionals.',
+    specs: { Furnishing: 'Fully furnished', Floor: '3 of 6', Facing: 'South', Age: '2 years', Parking: 'Bike only' },
+    amen: ['Lift', 'Wi-Fi ready', 'Power backup', 'Geyser', 'Guard'] }
+];
+
+const MAX = { sale: 50000000, rent: 200000 };   // budget slider ceiling per purpose
+
+/* ============ STATE & HELPERS ============ */
+const $ = s => document.querySelector(s);
+let st = { purpose: 'sale', type: 'all', q: '', bhk: '', pct: 100 };
+let favs = new Set(); try { favs = new Set(JSON.parse(localStorage.getItem('favs') || '[]')); } catch (e) {}
+let gi = 0;
+
+function fmt(n) {
+  if (n >= 1e7) return '₹' + +(n / 1e7).toFixed(2) + ' Cr';
+  if (n >= 1e5) return '₹' + +(n / 1e5).toFixed(2) + ' L';
+  return '₹' + n.toLocaleString('en-IN');
+}
+const price = p => fmt(p.price) + (p.purpose === 'rent' ? '/mo' : '');
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.remove('hidden');
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.add('hidden'), 2800);
+}
+const icons = () => lucide.createIcons();
+const wa = msg => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+
+/* ============ FILTERING & RENDER ============ */
+function filtered() {
+  const q = st.q.trim().toLowerCase(), cap = MAX[st.purpose] * st.pct / 100;
+  return PROPS.filter(p =>
+    p.purpose === st.purpose && p.price <= cap &&
+    (st.type === 'all' || p.type === st.type || p.cat.toLowerCase() === st.type) &&
+    (!st.bhk || (st.bhk === '4' ? p.beds >= 4 : p.beds === +st.bhk)) &&
+    (!q || (p.title + ' ' + p.loc + ' ' + p.cat + ' ' + p.type + ' ' + p.desc).toLowerCase().includes(q)));
+}
+function renderChips() {
+  const types = [['all', 'All'], ['residential', 'Residential'], ['commercial', 'Commercial'], ['flats', 'Flats / Apartments'], ['villas', 'Villas'], ['plots', 'Plots']];
+  $('#chips').innerHTML = types.map(([k, l]) => `<button class="chip ${st.type === k ? 'on' : ''}" data-type="${k}">${l}</button>`).join('');
+}
+function card(p) {
+  const pill = (ic, v) => `<span class="flex items-center gap-1.5 bg-stone rounded-full px-3 py-1.5 text-xs font-semibold"><i data-lucide="${ic}" class="w-3.5 h-3.5 text-brass"></i>${v}</span>`;
+  return `<article data-r class="lift group bg-white rounded-3xl overflow-hidden flex flex-col">
+    <div class="relative overflow-hidden">
+      <img src="${U(p.imgs[0], 700)}" alt="${p.title}" loading="lazy" class="w-full aspect-[4/3] object-cover bg-line transition duration-700 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-ink/25"></div>
+      <span class="absolute top-3 left-3 bg-brass text-white text-xs font-bold px-3 py-1 rounded-full">For ${p.purpose === 'sale' ? 'Sale' : 'Rent'}</span>
+      <span class="glass absolute top-3 left-24 text-white text-xs font-semibold px-3 py-1 rounded-full">${p.cat}</span>
+      <button data-fav="${p.id}" aria-label="Save to favourites" class="glass absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center text-white">
+        <i data-lucide="heart" class="w-4 h-4 ${favs.has(p.id) ? 'fill-red-500 text-red-500' : ''}"></i></button>
+      <p class="absolute bottom-3 left-4 font-display text-3xl text-white">${price(p)}</p>
+    </div>
+    <div class="p-5 flex flex-col gap-4 grow">
+      <div><h3 class="font-semibold text-lg leading-snug">${p.title}</h3>
+        <p class="text-sm text-ink/60 flex items-center gap-1 mt-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i>${p.loc}</p></div>
+      <div class="flex flex-wrap gap-2">
+        ${p.beds ? pill('bed-double', p.beds + ' Beds') : ''}${p.baths ? pill('bath', p.baths + ' Baths') : ''}${pill('ruler', p.sqft.toLocaleString('en-IN') + ' sq ft')}</div>
+      <div class="flex gap-2 mt-auto">
+        <button data-view="${p.id}" class="grow bg-ink text-white text-sm font-semibold py-3 rounded-full hover:bg-brass transition">View details</button>
+        <a href="tel:+${PHONE}" aria-label="Call about ${p.title}" class="p-3 rounded-full border border-line hover:bg-stone"><i data-lucide="phone" class="w-4 h-4"></i></a>
+        <a href="${wa('Hi, I am interested in: ' + p.title + ', ' + p.loc)}" target="_blank" rel="noopener" aria-label="WhatsApp about ${p.title}" class="p-3 rounded-full border border-line hover:bg-stone"><svg class="w-[18px] h-[18px]" fill="#25D366"><use href="#wa"/></svg></a>
+      </div></div></article>`;
+}
+function render() {
+  const list = filtered().sort((a, b) => st.sort === 'lo' ? a.price - b.price : st.sort === 'hi' ? b.price - a.price : 0);
+  $('#grid').innerHTML = list.map(card).join('');
+  $('#empty').classList.toggle('hidden', list.length > 0);
+  $('#count').textContent = `${list.length} ${list.length === 1 ? 'property' : 'properties'} ${st.purpose === 'sale' ? 'for sale' : 'for rent'}` + (favs.size ? ` · ${favs.size} saved` : '');
+  $('#budgetLabel').textContent = fmt(MAX[st.purpose] * st.pct / 100);
+  renderChips(); icons();
+}
+function resetFilters() { st = { ...st, type: 'all', q: '', bhk: '', pct: 100 }; $('#q').value = ''; $('#bhk').value = ''; $('#budget').value = 100; render(); }
+
+/* ============ FILTER EVENTS ============ */
+document.querySelectorAll('.tab').forEach(b => b.onclick = () => {
+  st.purpose = b.dataset.purpose;
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === b)); render();
+});
+$('#q').oninput = e => { st.q = e.target.value; render(); };
+$('#sort').onchange = e => { st.sort = e.target.value; render(); };
+$('#bhk').onchange = e => { st.bhk = e.target.value; render(); };
+$('#budget').oninput = e => { st.pct = +e.target.value; render(); };
+$('#chips').onclick = e => { const b = e.target.closest('[data-type]'); if (b) { st.type = b.dataset.type; render(); } };
+$('#grid').onclick = e => {
+  const f = e.target.closest('[data-fav]'), v = e.target.closest('[data-view]');
+  if (f) {
+    const id = +f.dataset.fav; favs.has(id) ? favs.delete(id) : favs.add(id);
+    try { localStorage.setItem('favs', JSON.stringify([...favs])); } catch (x) {}
+    toast(favs.has(id) ? 'Saved to favourites' : 'Removed from favourites'); render();
+  }
+  if (v) openDetail(+v.dataset.view);
+};
+$('#menuBtn').onclick = () => $('#mobileMenu').classList.toggle('hidden');
+$('#mobileMenu').onclick = e => { if (e.target.closest('a,button')) $('#mobileMenu').classList.add('hidden'); };
+
+/* ============ MODAL (shared shell) ============ */
+function openModal(html) {
+  $('#modalBox').innerHTML = `<button onclick="closeModal()" aria-label="Close" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-white shadow flex items-center justify-center"><i data-lucide="x" class="w-5 h-5"></i></button>` + html;
+  $('#modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; lenis && lenis.stop(); $('#modal').scrollTop = 0; icons();
+}
+function closeModal() { $('#modal').classList.add('hidden'); document.body.style.overflow = ''; lenis && lenis.start(); }
+$('#modal').onclick = e => { if (e.target.id === 'modal') closeModal(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ============ PROPERTY DETAIL MODAL ============ */
+function openDetail(id) {
+  const p = PROPS.find(x => x.id === id); gi = 0;
+  openModal(`
+  <div class="grid md:grid-cols-5">
+    <div class="md:col-span-3 md:rounded-l-2xl overflow-hidden">
+      <div class="relative">
+        <img id="gImg" src="${U(p.imgs[0], 1100)}" alt="${p.title}" class="w-full aspect-[4/3] object-cover bg-line">
+        <button onclick="gal(${id},-1)" aria-label="Previous photo" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+        <button onclick="gal(${id},1)" aria-label="Next photo" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+      </div>
+      <div class="flex gap-2 p-3 overflow-x-auto no-scrollbar">${p.imgs.map((m, i) => `<button onclick="gal(${id},0,${i})" aria-label="Photo ${i + 1}"><img src="${U(m, 200)}" alt="" class="w-20 h-14 object-cover rounded-lg bg-line"></button>`).join('')}</div>
+      <!-- Virtual tour placeholder: swap this button for a Matterport / YouTube iframe -->
+      <button onclick="toast('Virtual tour: add your Matterport or video link here')" class="mx-3 mb-3 w-[calc(100%-1.5rem)] relative rounded-xl overflow-hidden h-28 bg-ink text-white flex items-center justify-center gap-3 font-semibold">
+        <img src="${U(p.imgs[1] || p.imgs[0], 600)}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30"><i data-lucide="play-circle" class="w-7 h-7 relative"></i><span class="relative">Take the virtual tour</span></button>
+    </div>
+    <div class="md:col-span-2 p-5 md:p-7">
+      <div class="flex gap-2 text-xs font-bold"><span class="bg-brass text-white px-3 py-1 rounded-full">For ${p.purpose === 'sale' ? 'Sale' : 'Rent'}</span><span class="bg-stone px-3 py-1 rounded-full">${p.cat}</span></div>
+      <h2 class="font-display text-3xl mt-3">${p.title}</h2>
+      <p class="text-ink/60 text-sm flex items-center gap-1 mt-1"><i data-lucide="map-pin" class="w-4 h-4"></i>${p.loc}</p>
+      <p class="font-display text-3xl text-brass mt-3">${price(p)}</p>
+      <p class="mt-3 text-ink/75 leading-relaxed text-sm">${p.desc}</p>
+    </div>
+  </div>
+  <div class="grid md:grid-cols-5 gap-8 p-5 md:p-7 border-t border-line">
+    <div class="md:col-span-3 grid gap-6">
+      <div><h3 class="font-semibold mb-3">Specifications</h3>
+        <dl class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
+          <div><dt class="text-ink/60">Area</dt><dd class="font-semibold">${p.sqft.toLocaleString('en-IN')} sq ft</dd></div>
+          ${p.beds ? `<div><dt class="text-ink/60">Bedrooms</dt><dd class="font-semibold">${p.beds}</dd></div>` : ''}
+          ${p.baths ? `<div><dt class="text-ink/60">Bathrooms</dt><dd class="font-semibold">${p.baths}</dd></div>` : ''}
+          ${Object.entries(p.specs).map(([k, v]) => `<div><dt class="text-ink/60">${k}</dt><dd class="font-semibold">${v}</dd></div>`).join('')}
+        </dl></div>
+      <div><h3 class="font-semibold mb-3">Amenities</h3>
+        <ul class="grid grid-cols-2 gap-2 text-sm">${p.amen.map(a => `<li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brass"></i>${a}</li>`).join('')}</ul></div>
+    </div>
+    <form class="md:col-span-2 bg-stone rounded-2xl p-5 grid gap-3 content-start" onsubmit="return send(event,'Inquiry sent. Rajveer will call you shortly.')">
+      <h3 class="font-semibold">Ask the agent about this property</h3>
+      <input required class="field" placeholder="Your name" aria-label="Your name">
+      <input required type="tel" pattern="[0-9+ ]{10,14}" class="field" placeholder="Phone number" aria-label="Phone number">
+      <textarea class="field" rows="3" aria-label="Message">I'd like to visit ${p.title} in ${p.loc}.</textarea>
+      <button class="bg-ink text-white font-semibold py-3 rounded-full hover:bg-brass">Send inquiry</button>
+      <a href="${wa('Hi, I am interested in: ' + p.title + ', ' + p.loc)}" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 text-sm font-semibold py-2.5 rounded-full border border-ink/20 bg-white"><svg class="w-4 h-4" fill="#25D366"><use href="#wa"/></svg>Chat on WhatsApp</a>
+    </form>
+  </div>`);
+}
+function gal(id, d, to) {
+  const p = PROPS.find(x => x.id === id), n = p.imgs.length;
+  gi = to ?? (gi + d + n) % n; $('#gImg').src = U(p.imgs[gi], 1100);
+}
+function send(e, msg) { e.preventDefault(); closeModal(); toast(msg); return false; }
+
+/* ============ INQUIRE / SELL FORM MODAL ============ */
+function openForm(mode) {
+  const sell = mode === 'sell';
+  openModal(`<form class="p-6 md:p-9 max-w-xl mx-auto grid gap-3" onsubmit="return send(event,'${sell ? 'Request received. We will call you for a free valuation.' : 'Thanks. We will call you back soon.'}')">
+    <h2 class="font-display text-3xl">${sell ? 'List your property' : 'Tell us what you are looking for'}</h2>
+    <p class="text-sm text-ink/60 mb-2">${sell ? 'Share a few details and we will call you with a free valuation.' : 'We will match you with listings, including ones not yet on the site.'}</p>
+    <input required class="field" placeholder="Your name" aria-label="Your name">
+    <input required type="tel" pattern="[0-9+ ]{10,14}" class="field" placeholder="Phone number" aria-label="Phone number">
+    ${sell ? `<div class="grid grid-cols-2 gap-3">
+      <select class="field" aria-label="Purpose"><option>Sell</option><option>Rent out</option></select>
+      <select class="field" aria-label="Property type"><option>Flat / Apartment</option><option>Villa</option><option>Plot</option><option>Commercial</option></select></div>
+      <input required class="field" placeholder="Locality and city" aria-label="Locality">
+      <input class="field" placeholder="Expected price or rent (optional)" aria-label="Expected price">` :
+    `<textarea class="field" rows="3" placeholder="e.g. 3 BHK flat for sale in Malviya Nagar under ₹2 Cr" aria-label="Requirement"></textarea>`}
+    <button class="mt-2 bg-ink text-white font-semibold py-3 rounded-full hover:bg-brass">${sell ? 'Request free valuation' : 'Send inquiry'}</button>
+  </form>`);
+}
+
+/* ============ TYPE TILES ============ */
+const TILES = [['flats', 'Flats', 'Ready-to-move apartments', 'photo-1545324418-cc1a3fa10c00'], ['villas', 'Villas', 'Independent homes with space', 'photo-1600585154340-be6161a56a0c'],
+  ['plots', 'Plots', 'Approved land to build on', 'photo-1500382017468-9049fed747ef'], ['commercial', 'Commercial', 'Offices and retail shops', 'photo-1497366216548-37526070297c']];
+$('#tiles').innerHTML = TILES.map(([k, n, d, i]) => `<button data-r onclick="pickType('${k}')" class="group relative aspect-[4/5] rounded-2xl overflow-hidden text-left">
+  <img src="${U(i, 600)}" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover bg-line transition duration-700 group-hover:scale-110">
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/15 to-transparent"></div>
+  <span class="glass absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center text-white"><i data-lucide="arrow-up-right" class="w-4 h-4"></i></span>
+  <span class="absolute bottom-0 p-4 text-white"><b class="block font-display text-2xl font-medium">${n}</b><span class="text-xs text-white/80">${d}</span></span></button>`).join('');
+function pickType(t) { st.type = t; render(); go('#listings'); }
+
+/* ============ JAIPUR LOCALITIES ============ */
+const LOCS = [['Malviya Nagar', 'Established and well connected'], ['Vaishali Nagar', 'Premium villas and flats'], ['C-Scheme', 'Central offices and apartments'],
+  ['Mansarovar', 'Metro-linked family homes'], ['Jagatpura', 'Airport-side plots'], ['Tonk Road', 'Showrooms and farmhouses'], ['Ajmer Road', 'Fast-growing west Jaipur'],
+  ['Sirsi Road', 'Budget plots and flats'], ['Bani Park', 'Old-city charm, builder floors'], ['Sitapura', 'IT and industrial hub'], ['MI Road', 'Main shopping street']];
+$('#locList').innerHTML = LOCS.map(l => `<option value="${l[0]}">`).join('');
+// Arch-topped cards echo the Rajasthani mehrab
+$('#localities').innerHTML = LOCS.map(([n, d]) => `<button onclick="pickLoc('${n}')" class="snap-start shrink-0 w-40 bg-white border border-line rounded-t-[999px] rounded-b-2xl pt-9 pb-5 px-4 flex flex-col items-center text-center hover:bg-stone transition">
+  <b class="font-display text-4xl text-brass font-medium">${PROPS.filter(p => p.loc.startsWith(n)).length}</b><span class="text-xs text-ink/60">listings</span>
+  <span class="font-semibold mt-3">${n}</span><span class="text-xs text-ink/60 mt-1">${d}</span></button>`).join('');
+function pickLoc(n) {
+  const m = PROPS.filter(p => p.loc.startsWith(n));
+  if (m.length && !m.some(p => p.purpose === st.purpose)) document.querySelector(`.tab[data-purpose=${m[0].purpose}]`).click();   // switch Sale/Rent if needed
+  st.q = n; st.type = 'all'; st.bhk = ''; st.pct = 100; $('#q').value = n; $('#bhk').value = ''; $('#budget').value = 100; render(); go('#listings');
+}
+
+/* ============ INIT ============ */
+render();
+
+/* ============ SMOOTH SCROLL + 3D MOTION ============ */
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+let lenis = null, mx = 0, my = 0, mxT = 0, myT = 0;
+if (!RM && window.Lenis) lenis = new Lenis({ lerp: 0.075, wheelMultiplier: 1 });   // lower lerp = silkier scroll
+function go(sel) {
+  const el = typeof sel === 'string' ? document.querySelector(sel) : sel; if (!el) return;
+  lenis ? lenis.scrollTo(el, { offset: -70, duration: 1.4 }) : el.scrollIntoView({ behavior: 'smooth' });
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (a && a.getAttribute('href').length > 1) { e.preventDefault(); go(a.getAttribute('href')); }
+});
+
+// Floating 3D tiles: each group belongs to one section and only shows while that section is on screen
+// [section, lucide icon, x position %, start height (0-1 of screen), parallax speed]
+const FL = [['#hero','building-2',4,.3,.5],['#hero','key-round',90,.55,.9],['#hero','house',93,.12,1.3],
+  ['#listings','tag',2,.3,.7],['#listings','map-pin',94,.6,1.1],['#listings','heart',3,.85,1.4],['#listings','bed-double',93,.15,.5],
+  ['#agent','star',93,.3,.7],['#agent','handshake',3,.6,1.1],['#agent','badge-check',92,.85,.5],['#contact','landmark',92,.3,.8]];
+const layer = document.createElement('div');
+layer.className = 'fixed inset-0 pointer-events-none z-30 overflow-hidden'; layer.style.perspective = '900px'; layer.setAttribute('aria-hidden', 'true');
+if (RM) layer.style.display = 'none';
+FL.forEach((f, i) => {
+  const e = document.createElement('div'); e.className = 'fl' + (i % 2 ? ' max-md:hidden' : ''); e.style.left = f[2] + '%';
+  e.innerHTML = `<div class="fl-b"></div><div class="fl-f"><i data-lucide="${f[1]}"></i></div>`;
+  f.el = e; f.sec = document.querySelector(f[0]); layer.appendChild(e);
+});
+document.body.appendChild(layer); icons();
+
+document.addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse') return;
+  mxT = e.clientX / innerWidth * 2 - 1; myT = e.clientY / innerHeight * 2 - 1;
+  const a = e.target.closest('.lift');                      // 3D tilt toward the cursor on cards
+  if (a) { const r = a.getBoundingClientRect(); a._ttx = -((e.clientY - r.top) / r.height - .5) * 10; a._tty = ((e.clientX - r.left) / r.width - .5) * 12; }
+});
+document.addEventListener('pointerout', e => { const a = e.target.closest && e.target.closest('.lift'); if (a) { a._ttx = 0; a._tty = 0; } });
+
+function frame(t) {
+  const vh = innerHeight, sc = lenis ? lenis.scroll : scrollY;
+  mx += (mxT - mx) * .06; my += (myT - my) * .06;
+  $('#prog').style.transform = `scaleX(${clamp(sc / Math.max(1, document.documentElement.scrollHeight - vh))})`;
+
+  // Hero parallax and tilted featured card
+  if (sc < vh * 1.3) {
+    $('#heroImg').style.transform = `translate3d(0,${Math.min(sc * .25, 110)}px,0) scale(1.25)`;
+    const ht = $('#heroText'); ht.style.transform = `translate3d(0,${sc * .18}px,0)`; ht.style.opacity = clamp(1 - sc / (vh * 1.1));
+    $('#heroCard').style.transform = `perspective(1000px) rotateY(${-12 + sc * .03 + mx * 8}deg) rotateX(${-my * 6 + sc * .02}deg) translate3d(0,${sc * .1}px,0)`;
+  }
+
+  // Floating tiles
+  FL.forEach((f, i) => {
+    const r = f.sec.getBoundingClientRect(), ov = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    const vis = clamp(ov / (Math.min(r.height, vh) * .7));
+    const span = vh * 1.3, d = r.top + r.height / 2 - vh / 2;
+    let y = f[3] * vh + d * f[4]; y = ((y + .15 * vh) % span + span) % span - .15 * vh;   // wraps so tiles keep drifting up
+    const dir = i % 2 ? 1 : -1;
+    f.el.style.setProperty('--a', (vis * clamp(Math.min(y + 40, vh - y) / 160) * .95).toFixed(3));
+    f.el.style.transform = `translate3d(${Math.sin(sc / 260 + i) * 22}px,${y + Math.sin(t / 1000 + i * 1.7) * 10}px,0) rotateX(${sc * .05 * dir + my * 14}deg) rotateY(${sc * .09 * dir + mx * 20}deg) rotateZ(${Math.sin(sc / 500 + i) * 8}deg)`;
+  });
+
+  // Scroll-scrubbed 3D reveal: elements tilt up from below as they enter the screen
+  document.querySelectorAll('[data-r]').forEach(el => {
+    let p = RM ? 1 : clamp((vh - el.getBoundingClientRect().top) / (vh * .5)); p = 1 - Math.pow(1 - p, 3);
+    el._tx = (el._tx || 0) + ((el._ttx || 0) - (el._tx || 0)) * .12; el._ty = (el._ty || 0) + ((el._tty || 0) - (el._ty || 0)) * .12;
+    el.style.opacity = p;
+    el.style.transform = `perspective(1200px) translate3d(0,${(1 - p) * 80}px,0) rotateX(${(1 - p) * 16 + el._tx}deg) rotateY(${el._ty}deg) scale(${.92 + .08 * p})`;
+  });
+}
+(function loop(t) { lenis && lenis.raf(t); frame(t); requestAnimationFrame(loop); })(0);
+</script>
+</body>
+</html>
